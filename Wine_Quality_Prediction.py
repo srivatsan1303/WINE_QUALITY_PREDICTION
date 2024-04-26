@@ -21,6 +21,7 @@ if __name__ == "__main__":
     # Data paths-sj796
     path_to_training_data = "s3://vatsanbucket/TrainingDataset.csv"
     path_to_validation_data = "s3://vatsanbucket/ValidationDataset.csv"
+    path_to_output = "s3://vatsanbucket/finalmodel"
 
     # Training data-sj796
     print(f"Training data from: {path_to_training_data} was loaded by sj796")
@@ -87,5 +88,9 @@ if __name__ == "__main__":
     final_f1_score = f1_evaluator.evaluate(final_predictions)
     print(f"Final Accuracy after Cross-Validation achieved by sj796: {final_accuracy}")
     print(f"Final F1 Score after Cross-Validation achieved by sj796: {final_f1_score}")
+
+    print("Saving the best model to S3 by sj796")
+    model_path = path_to_output
+    model_trained.write().overwrite().save(model_path)
 
     sys.exit(0)
