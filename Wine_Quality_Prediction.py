@@ -93,4 +93,4 @@ if __name__ == "__main__":
     model_path = path_to_output
     model_trained.write().overwrite().save(model_path)
 
-    sys.exit(0)
+    spark.stop()
